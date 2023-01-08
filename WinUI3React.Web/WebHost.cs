@@ -17,6 +17,7 @@ public class WebHost
     private HttpListener _server;
     private int _port;
     private string _baseDir;
+    private bool _isStopping;
 
     public WebHost(int port = DEFAULT_PORT)
     {
@@ -30,12 +31,14 @@ public class WebHost
         {
             _server.Prefixes.Add($"{host}:{_port}/");
         }
+        _isStopping = false;
         _server.Start();
         Receive();
     }
 
     public void Stop()
     {
+        _isStopping = true;
         _server?.Stop();
         _server = null;
     }
@@ -48,6 +51,7 @@ public class WebHost
     {
         if (_server is null) return;
         if (!_server.IsListening) return;
+        if (_isStopping) return;
 
         var ctx = _server.EndGetContext(result);
         var localPath = ctx.Request.Url?.LocalPath.TrimStart('/') ?? string.Empty;

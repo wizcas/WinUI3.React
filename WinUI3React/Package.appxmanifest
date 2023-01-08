@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="db7fb8be-12da-46ce-bccc-ef311d891a5c"
+    Name="00474e9e-75b2-43fe-8528-acfd8eb879c7"
     Publisher="CN=0x1C.dev"
     Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>WinUI3React (Package)</DisplayName>
-    <PublisherDisplayName>0x1C.dev</PublisherDisplayName>
-    <Logo>Images\StoreLogo.png</Logo>
+    <DisplayName>WinUI3React</DisplayName>
+    <PublisherDisplayName>chen</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -31,13 +31,13 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="WinUI3React (Package)"
-        Description="WinUI3React (Package)"
+        DisplayName="WinUI3React"
+        Description="WinUI3React"
         BackgroundColor="transparent"
-        Square150x150Logo="Images\Square150x150Logo.png"
-        Square44x44Logo="Images\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
-        <uap:SplashScreen Image="Images\SplashScreen.png" />
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>
