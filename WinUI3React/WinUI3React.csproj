@@ -17,21 +17,13 @@
     <PackageReference Include="MimeTypeMapOfficial" Version="1.0.17" />
   </ItemGroup>
 
-  <Target Name="BuildWebApp" BeforeTargets="Rebuild">
+  <Target Name="BuildWebApp" BeforeTargets="GetCopyToOutputDirectoryItems" Condition="$(Configuration)=='Release'">
     <Message Importance="high" Text="Building webapp..."/>
+    <Message Importance="high" Text="project name: $(MSBuildThisFile)"/>
     <Exec Command="powershell -NonInteractive -executionpolicy Unrestricted -command &quot;&amp; { &amp;&apos;.\build-webapp.ps1&apos; } &quot;"/>
   </Target>
-  <!--<Target Name="CopyWebApp" BeforeTargets="Rebuild">
-    <Message Importance="high" Text="Copying webapp..."/>
-    <ItemGroup>
-      <WebAppBuild Include="..\webapp\dist\**\*.*" />
-    </ItemGroup>
-    <RemoveDir Directories="$(TargetDir)\webapp"/>
-    <MakeDir Directories="$(TargetDir)\webapp" />
-    <Copy SourceFiles="@(WebAppBuild)" DestinationFiles="$(TargetDir)\webapp\%(RecursiveDir)%(FileName)%(Extension)"/>
-  </Target>-->
 
-  <ItemGroup>
+  <ItemGroup Condition="$(Configuration)=='Release'">
     <Content Include="..\webapp\dist\**\*.*" CopyToOutputDirectory="PreserveNewest">
       <Link>webapp\%(RecursiveDir)%(Filename)%(Extension)</Link>
     </Content>
