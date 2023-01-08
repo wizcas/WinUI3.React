@@ -16,9 +16,11 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <WebView2 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                  Source="http://localhost:8728"/>
+                  Source="{x:Bind BaseSource}"/>
+        <TextBlock Text="{x:Bind BaseSource}" Grid.Row="1"/>
     </Grid>
 </Window>

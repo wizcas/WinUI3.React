@@ -8,16 +8,19 @@ namespace WinUI3React.Web;
 
 public class WebHost
 {
+#if DEBUG
+    const int DEFAULT_PORT = 5173;
+#else
     const int DEFAULT_PORT = 8728;
-    static readonly string[] HOSTS = new[] {
-        "http://localhost",
-        "http://127.0.0.1",
-    };
+#endif
+    const string HOST = "http://localhost";
 
     private HttpListener _server;
     private int _port;
     private string _baseDir;
     private bool _isStopping;
+
+    public string BaseURL => $"{HOST}:{_port}/";
 
     public WebHost(int port = DEFAULT_PORT)
     {
@@ -26,14 +29,15 @@ public class WebHost
     }
     public void Start()
     {
+#if DEBUG
+        // In debug mode, we want to use the React dev server
+#else
         _server = new HttpListener();
-        foreach (var host in HOSTS)
-        {
-            _server.Prefixes.Add($"{host}:{_port}/");
-        }
+        _server.Prefixes.Add(BaseURL);
         _isStopping = false;
         _server.Start();
         Receive();
+#endif
     }
 
     public void Stop()

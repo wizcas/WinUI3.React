@@ -26,6 +26,7 @@ namespace WinUI3React
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private string BaseSource => (Application.Current as App).BaseURL;
         public MainWindow()
         {
             this.InitializeComponent();
