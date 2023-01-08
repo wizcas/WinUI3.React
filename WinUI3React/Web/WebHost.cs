@@ -1,9 +1,11 @@
 ﻿using MimeTypes;
+using System;
+using System.IO;
 using System.Net;
 
-namespace WinUI3React.WebHost;
+namespace WinUI3React.Web;
 
-public class HttpServer
+public class WebHost
 {
     const int DEFAULT_PORT= 8728;
     static readonly string[] HOSTS = new[] {
@@ -11,11 +13,11 @@ public class HttpServer
         "http://127.0.0.1",
     };
 
-    private HttpListener? _server;
+    private HttpListener _server;
     private int _port;
     private string _baseDir;
 
-    public HttpServer(int port=DEFAULT_PORT)
+    public WebHost(int port=DEFAULT_PORT)
     {
         _port = port;
         _baseDir = Path.Combine(AppContext.BaseDirectory, "webapp");
