@@ -1,6 +1,8 @@
 # WinUI3.React
 This is a scaffold project that allows you to run a WinUI3 application as the host of React web app.
 
+![Screenshot](./screenshot.png)
+
 # Idea
 The idea is pretty simple - the WinUI3 holds a `WebView2` component with its
 source set to a local web server. The web server serves the React app and other
