@@ -10,7 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -20,7 +20,11 @@
         </Grid.RowDefinitions>
 
         <WebView2 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                  Source="{x:Bind BaseSource}"/>
-        <TextBlock Text="{x:Bind BaseSource}" Grid.Row="1"/>
+                  Source="{x:Bind BaseSource}" Name="webView" CoreWebView2Initialized="webView_CoreWebView2Initialized"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock Text="{x:Bind BaseSource}" />
+            <Button Content="Say Hi to web" Click="Button_Click"/>
+            <TextBlock Text="{x:Bind ViewModel.WebMessage,Mode=OneWay}" />
+        </StackPanel>
     </Grid>
 </Window>

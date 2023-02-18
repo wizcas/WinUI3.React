@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import { Hello } from "./Hello";
 import "./index.css";
+import {Interop} from "./Interop";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "hello",
     element: <Hello />,
+  },
+  {
+    path: "interop",
+    element: <Interop />,
   },
 ]);
 
